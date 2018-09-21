@@ -13,9 +13,8 @@
   </script>
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvReady();"  type="text/javascript"></script>
   <script>
-    imgElement = document.getElementById(imgSource);
-    let mat = cv.imread(imgElement);
-    cv.imshow('canvasOutput', mat);
+    let mat = cv.imread("Images/14CE754.jpg");
+    cv.imshow('canvasOutput',mat);
     mat.delete();
     
     async function loadmodel(){
