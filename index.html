@@ -13,9 +13,9 @@
   </script>
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvReady();"  type="text/javascript"></script>
   <script>
-    let mat = cv.imread("https://github.com/Sreerag-ibtl/Sreerag-ibtl.github.io/blob/master/Images/14CE754.jpg");
-    cv.imshow('canvasOutput',mat);
-    mat.delete();
+    let mat = cv.imread(imgSource);
+    //cv.imshow('canvasOutput',mat);
+    //mat.delete();
     
     async function loadmodel(){
       console.log("Model loading...");
