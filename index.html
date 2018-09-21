@@ -22,8 +22,9 @@
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvReady();"  type="text/javascript"></script>
   <script>
     let image = cv.imread(imgSource);
-    image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.resize(image1, (128, 64));
+    let dsize = new cv.Size(128, 64);
+    cv.cvtColor(image, image, COLOR_BGR2GRAY, 0);
+    cv.resize(image, image, dsize);
     image = tf.reshape(image, [64, 128]);
     image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
