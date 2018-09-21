@@ -1,28 +1,40 @@
 <html>
   <body>
     <h1>DEMO: ALPR</h1>
-    <p id="status">Input image</p>
+    <p id="status">TensorFlow.JS is loading...</p>
+    <p id="status1">OpenCV is loading...</p>
+    <p>Input image</p>
     <img src="Images/14CE754.jpg" id="imgSource" alt="Smiley face" height="500" width="500">
     <canvas id="canvasOutput" ></canvas>
   </body>
+  <script>
+    function onTfJsReady(){
+      document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
+    }
+  
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
   <script>
   function onOpenCvReady() {
-      document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+      document.getElementById('status1').innerHTML = 'OpenCV.JS is ready.';
     }
   </script>
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvReady();"  type="text/javascript"></script>
   <script>
-    let mat = cv.imread(imgSource);
-    cv.imshow('canvasOutput',mat);
-    //mat.delete();
+    let image = cv.imread(imgSource);
+    image = cv.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv.resize(image1, (128, 64));
+    image = tf.reshape(image, [64, 128]);
+    image = tf.cast(image,'float32');
+    image = tf.expandDims(image, -1);
+    image = tf.expandDims(image, 0);
     
-    async function loadmodel(){
+    async function predict(image){
       console.log("Model loading...");
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");
+      out = model.predict(image);
     }
-    //loadmodel();
+    out = predict(image);
   </script>
 
 </html>
