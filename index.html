@@ -1,7 +1,8 @@
 <html>
   <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+    <h1>DEMO: ALPR</h1>
+    <p>Input image</p>
+    <img src="Images/14CE754.jpg"alt="Smiley face" height="42" width="42">
   </body>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
   <script>
@@ -9,6 +10,7 @@
       console.log("Model loading...");
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");
+      model.predict()
     }
     loadmodel();
   </script>
