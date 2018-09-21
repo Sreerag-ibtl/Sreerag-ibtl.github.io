@@ -21,7 +21,7 @@
   </script>
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvReady();"  type="text/javascript"></script>
   <script>
-    let image = tf.fromPixels(imgSource);
+    let image = cv.imread(imgSource);
     let dsize = new cv.Size(128, 64);
     cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
     cv.resize(image, image, dsize);
