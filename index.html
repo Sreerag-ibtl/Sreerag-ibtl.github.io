@@ -11,6 +11,7 @@
     function onTfJsReady(){
       document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
     }
+  </script>
   
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
   <script>
@@ -21,7 +22,7 @@
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvReady();"  type="text/javascript"></script>
   <script>
     let image = cv.imread(imgSource);
-    image = cv.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     image = cv.resize(image1, (128, 64));
     image = tf.reshape(image, [64, 128]);
     image = tf.cast(image,'float32');
