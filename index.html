@@ -23,6 +23,10 @@
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);
     
+    var out = predict(image);
+    var shapeVal = out.shape;
+    console.log(shapeVal);
+    
     async function predict(image){
       console.log("Model loading...");
       const model = await tf.loadModel("model4jszp/model.json");
@@ -30,9 +34,5 @@
       var out = model.predict(image);
       return out;
     }
-    var out = predict(image);
-    var shapeVal = out.shape;
-    console.log(shapeVal);
  </script>
-
 </html>
