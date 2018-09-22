@@ -26,10 +26,8 @@
     //let dsize = new cv.Size(128, 64);
     //cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
     //cv.resize(image, image, dsize);
-    image = image.mean(2);
     image = tf.image.resizeBilinear(image, [128, 64]);
-    image = nj.array(image);
-    image = tf.tensor(image);
+    image = image.mean(2);
     image = tf.reshape(image, [64, 128]);
     image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
