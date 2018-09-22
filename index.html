@@ -26,7 +26,7 @@
     async function load(){
       const model = tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");
-      return model
+      return model;
     }
     var model = load();
     var netoutValue = model.predict(image);
