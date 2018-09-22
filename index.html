@@ -46,7 +46,7 @@
     function decode_batch(out){
       ret = "";
       for(j=0; j<=out.shape[0]; j++){
-        outbest = tf.argmax(out[j, 2:],1);
+        outbest = tf.argmax(tf.slice(out[j, 2].slice(,1);
         outbest = Iter(outbest).groupBy();
         outstr = "";
         for(c in outbest){
