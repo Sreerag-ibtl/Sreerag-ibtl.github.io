@@ -23,9 +23,12 @@
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);           
     console.log("Model loading...");
-    const model = tf.loadModel("model4jszp/model.json");
-    console.log("Model loaded.");
-    var out = model.predict(image);
-    var out1 = predict(image);
+    async function load(){
+      const model = tf.loadModel("model4jszp/model.json");
+      console.log("Model loaded.");
+      return model
+    }
+    var model = load();
+    var netoutValue = model.predict(image);
  </script>
 </html>
