@@ -24,11 +24,11 @@
     image = tf.expandDims(image, 0);           
     console.log("Model loading...");
     async function load(){
-      const model = tf.loadModel("model4jszp/model.json");
-      console.log("Model loaded.");
+      const model = await tf.loadModel("model4jszp/model.json");
+      console.log("Model loaded.");      
       return model;
     }
     var model = load();
-    var netoutValue = model.predict(image);
+    var netoutValue = model.predict(image).dataSync();
  </script>
 </html>
