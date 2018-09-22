@@ -38,9 +38,10 @@
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");
       out = model.predict(image);
-      console.log(out);
+      return out;
     }
     out = predict(image);
+    consol.loag(out);
   </script>
 
 </html>
