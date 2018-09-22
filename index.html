@@ -29,7 +29,7 @@
       var netoutValue = model.predict(image).dataSync();
       return netoutValue;
     }
-    var netout = prob();
-   
+    var netout = prob().dataSync();
+    console.log(netout);  
  </script>
 </html>
