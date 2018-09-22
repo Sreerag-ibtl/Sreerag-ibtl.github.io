@@ -28,7 +28,7 @@
     //cv.resize(image, image, dsize);
     image = tf.image.resizeBilinear(image, [128, 64]);
     image = image.mean(2);
-    image = tf.reshape(image, [64, 128]);
+    //image = tf.reshape(image, [64, 128]);
     image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);
