@@ -28,7 +28,7 @@
       console.log("Model loaded.");  
       var netoutValue = model.predict(image).dataSync();
       netoutValue = tf.tensor(netoutValue, [32, 34]);
-      console.log(netoutValue);
+      console.log(netoutValue.shape[0]);
     }
     prob();
  </script>
