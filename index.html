@@ -46,7 +46,7 @@
     out = predict(image);
     function decode_batch(out){
       ret = "";
-      for(j=1; j<=out.shape[0]; j++){
+      for(j=1; j<=out.shape[1]; j++){
         outbest = tf.argmax(out.slice([j,2], [0,32]));
         outbest = Iter(outbest).groupBy();
         outstr = "";
