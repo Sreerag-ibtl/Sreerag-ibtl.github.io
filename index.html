@@ -29,7 +29,7 @@
       var netoutValue = model.predict(image);
       var ret = [];
       var outBest = [];
-      console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]));
+      console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]).dataSync);
     }
     prob();
  </script>
