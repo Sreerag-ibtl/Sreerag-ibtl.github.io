@@ -30,7 +30,7 @@
       var ret = [];
       var outBest = [];
       for(j=0; j<=netoutValue.shape[0]; j++){
-        console.log(netoutValue.slice([j, 2], [31]).dataSync());
+        console.log(netoutValue.slice([j, 2:]).dataSync());
       }
     }
     prob();
