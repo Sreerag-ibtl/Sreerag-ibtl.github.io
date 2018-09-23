@@ -32,7 +32,7 @@
       var ret = [];
       var outBest = [];
       for(j=0; j<=netoutValue1.shape[0]; j++){
-        console.log(netoutValue1.slice([j,2],[0, 32]).datasync());
+        console.log(netoutValue1.slice([j,2],[0, 32]).dataSync());
       }      
     }
     prob();
