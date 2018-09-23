@@ -30,7 +30,7 @@
       netoutValue = tf.tensor(netoutValue, [32, 34]);
       var ret = [];
       var outBest = [];
-      for(j=0; j<=out.shape[0]; j++){
+      for(j=0; j<=netoutValue.shape[0]; j++){
         outBest[outBest.length] = tf.argmax(netoutValue.slice([j,2],[31]));
       }
       console.log(outBest);
