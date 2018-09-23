@@ -29,9 +29,7 @@
       var netoutValue = model.predict(image);
       var ret = [];
       var outBest = [];
-      for(j in [0,1]){
-        console.log(netoutValue.slice([j], [0]));
-      }
+      console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]));
     }
     prob();
  </script>
