@@ -28,7 +28,12 @@
       console.log("Model loaded.");  
       var netoutValue = model.predict(image).dataSync();
       netoutValue = tf.tensor(netoutValue, [32, 34]);
-      console.log(netoutValue.shape[0]);
+      var ret = [];
+      var outBest = [];
+      for(j=0; j<=out.shape[0]; j++){
+        outBest[outBest.length] = tf.argmax(netoutValue.slice([j,2],[31]));
+      }
+      console.log(outBest);
     }
     prob();
  </script>
