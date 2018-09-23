@@ -26,14 +26,9 @@
     async function prob(){
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");  
-      var netoutValue = model.predict(image).dataSync();
-      console.log(netoutValue);
-      var netoutValue1 = tf.tensor(netoutValue, [32, 34]);
-      var ret = [];
-      var outBest = [];
-      for(j=0; j<=netoutValue1.shape[0]; j++){
-        console.log(netoutValue1.slice([j,2],[0, 32]).dataSync());
-      }      
+      var netoutValue = model.predict(image);
+      console.log(netoutValue.dataSync());
+      console.log(netoutValue);    
     }
     prob();
  </script>
