@@ -29,18 +29,18 @@
     image = tf.tensor2d(image, [128, 64]);
     image = tf.cast(image,'float32');
     image.print();
-    //image = tf.expandDims(image, -1);
-    //image = tf.expandDims(image, 0);           
-    //console.log("Model loading...");
-    //async function prob(){
-      //const model = await tf.loadModel("model4jszp/model.json");
-      //console.log("Model loaded.");  
-      //var netoutValue = model.predict(image);
-      //netoutValue.print();
-      //var ret = [];
-      //var outBest = [];
-      //console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]).dataSync);
-    //}
-    //prob();
+    image = tf.expandDims(image, -1);
+    image = tf.expandDims(image, 0);           
+    console.log("Model loading...");
+    async function prob(){
+      const model = await tf.loadModel("model4jszp/model.json");
+      console.log("Model loaded.");  
+      var netoutValue = model.predict(image);
+      netoutValue.print();
+      var ret = [];
+      var outBest = [];
+      console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]).dataSync);
+    }
+    prob();
  </script>
 </html>
