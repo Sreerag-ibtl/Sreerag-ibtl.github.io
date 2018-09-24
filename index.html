@@ -38,15 +38,23 @@
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);           
     console.log("Model loading...");
+    function range(start=0, end) {
+      var ans = [];
+      for (let i = start; i <= end; i++) {
+        ans.push(i);
+      }
+      return ans;
+    }
     async function prob(){
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");  
       var netoutValue = model.predict(image);
-      console.log(netoutValue.dataSync());
+      console.log(netoutValue.shape);
       //var ret = [];
       //var outBest = [];
-      //console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]).dataSync);
-    }
+      for(j in range(netoutValue.shape[0])){
+        console.log(j);
+      }
     prob();
  </script>
 </html>
