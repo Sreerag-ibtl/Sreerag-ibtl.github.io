@@ -2,6 +2,7 @@
   <body>
     <h1>DEMO: ALPR</h1>
     <p id="status">TensorFlow.JS is loading...</p>
+    <p id="status1">OpenCV.JS is loading...</p>
     <p>Input image</p>
     <img src="Images/14CE754.jpg" id="imgSource" alt="Smiley face" height="500" width="500">
   </body>
@@ -10,9 +11,13 @@
     function onTfJsReady(){
       document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
     }
+    function onOpenCvJsReady(){
+      document.getElementById('status1').innerHTML = 'OpenCV.JS is ready.';
+    }
   </script>
   
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0" onload="onTfJsReady();"> </script>
+  <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvJsReady();"> </script>
   
   <script>
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
