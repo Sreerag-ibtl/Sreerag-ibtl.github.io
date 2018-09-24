@@ -52,9 +52,7 @@
       console.log(netoutValue.shape);
       var ret = [];
       var outBest = [];
-      for(let i=0; i<34; i++){
-        console.log(netoutValue.slice([0, 2], [0, 30]).dataSync());
-      }
+      console.log(netoutValue[0, 2].dataSync());
     }
     prob();
  </script>
