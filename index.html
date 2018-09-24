@@ -28,7 +28,13 @@
             'image depth: ' + image.depth() + '\n' +
             'image channels ' + image.channels() + '\n' +
             'image type: ' + image.type() + '\n');
-    //cv.cvtColor(image, image, cv.COLOR_RGBA2GRAY, 0);
+    cv.cvtColor(image, image, cv.COLOR_RGBA2GRAY, 0);
+    console.log('image width: ' + image.cols + '\n' +
+            'image height: ' + image.rows + '\n' +
+            'image size: ' + image.size().width + '*' + image.size().height + '\n' +
+            'image depth: ' + image.depth() + '\n' +
+            'image channels ' + image.channels() + '\n' +
+            'image type: ' + image.type() + '\n');
     //image = image.data;
     //console.log(image);
     //image = tf.image.resizeBilinear(image, [128, 64]);
