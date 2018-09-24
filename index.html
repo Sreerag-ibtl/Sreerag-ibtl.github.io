@@ -19,24 +19,25 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0" onload="onTfJsReady();"> </script>
   <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvJsReady();"> </script>
   
-  <!--<script>
-    let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
-    let image = tf.fromPixels(imgSource);
-    image = tf.image.resizeBilinear(image, [128, 64]);
-    image = image.mean(2);
-    image = tf.cast(image,'float32');
-    image = tf.expandDims(image, -1);
-    image = tf.expandDims(image, 0);           
-    console.log("Model loading...");
-    async function prob(){
-      const model = await tf.loadModel("model4jszp/model.json");
-      console.log("Model loaded.");  
-      var netoutValue = model.predict(image);
-      netoutValue.print();
-      var ret = [];
-      var outBest = [];
+  <script>
+    //let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
+    let image = cv.imread(imgSource);
+    console.log(image);
+    //image = tf.image.resizeBilinear(image, [128, 64]);
+    //image = image.mean(2);
+    //image = tf.cast(image,'float32');
+    //image = tf.expandDims(image, -1);
+    //image = tf.expandDims(image, 0);           
+    //console.log("Model loading...");
+    //async function prob(){
+      //const model = await tf.loadModel("model4jszp/model.json");
+      //console.log("Model loaded.");  
+      //var netoutValue = model.predict(image);
+      //netoutValue.print();
+      //var ret = [];
+      //var outBest = [];
       //console.log(netoutValue.slice([0, 2, 0], [0, 30, 34]).dataSync);
     }
     prob();
- </script>-->
+ </script>
 </html>
