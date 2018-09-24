@@ -30,7 +30,7 @@
             'image channels ' + image.channels() + '\n' +
             'image type: ' + image.type() + '\n');
     cv.cvtColor(image, image, cv.COLOR_RGBA2GRAY, 0);
-    cv.resize(image, image, (128, 64), cv.INTER_LINEAR);
+    cv.resize(image, image, dsize, cv.INTER_LINEAR);
     console.log('image width: ' + image.cols + '\n' +
             'image height: ' + image.rows + '\n' +
             'image size: ' + image.size().width + '*' + image.size().height + '\n' +
