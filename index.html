@@ -28,7 +28,6 @@
     image = image.data;
     image = tf.tensor2d(image, [128, 64]);
     image = tf.cast(image,'float32');
-    image.print();
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);           
     console.log("Model loading...");
