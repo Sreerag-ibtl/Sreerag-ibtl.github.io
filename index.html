@@ -27,7 +27,7 @@
     cv.resize(image, image, dsize, cv.INTER_LINEAR);  
     const model = undefined;
 
-    function preprocess(image){
+    async function preprocess(image){
        return tf.tidy(()=>{
           image = image.data
           image = tf.tensor2d(image, [128, 64])
@@ -45,7 +45,7 @@
       return model
     }
 
-    function prediction(image){
+    async function prediction(image){
        return tf.tidy(() => { 
          const model = load()
          const netOutValue = await model.predict(image)
