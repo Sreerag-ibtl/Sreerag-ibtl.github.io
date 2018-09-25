@@ -41,11 +41,13 @@
       var outStr = "";
       outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1).dataSync();
       console.log(outBest);
-      for(var c in outBest){
+      for(let c of outBest){
         if(c<letters.length){
-          console.log(c);
+          outStr = outStr+letters[c];
         }
       }
+      ret[ret.length] = outStr;
+      console.log(ret);
     }
     prob();
  </script>
