@@ -38,7 +38,7 @@
       console.log(netoutValue.shape);
       var ret = [];
       var outBest = [];
-      console.log(tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34])).dataSync());
+      console.log(tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1).dataSync());
     }
     prob();
  </script>
