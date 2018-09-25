@@ -48,7 +48,7 @@
     function prediction(image){
        return tf.tidy(() => { 
          const model = load()
-         const netOutValue = model.predict(image)
+         const netOutValue = await model.predict(image)
          return netOutValue
        })
     }
