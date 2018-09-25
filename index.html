@@ -48,14 +48,14 @@
     function prediction(image){
        return tf.tidy(() => { 
          const model = load()
-         const netOutValue = model.predict(image)
+         const netOutValue = await model.predict(image)
          return netOutValue
        })
     }
 
     async function predText(){
-      image = preprocess(image);
-      const netoutValue = prediction(image);
+      image = await preprocess(image);
+      const netoutValue = await prediction(image);
       console.log(netoutValue.dataSync());
       var ret = [];
       var outBest = [];
