@@ -41,7 +41,9 @@
       var ret = [];
       var outBest = [];
       var outStr = "";
-      outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1).dataSync();
+      outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1);
+      console.log(outBest.shape);
+      outBest = outBest.dataSync();
       console.log(outBest);
       for(let c of outBest){
         if(c<letters.length){
