@@ -54,7 +54,6 @@
 
     async function predText(){
       image = await preprocess(image);
-      model = await load();
       const netoutValue = await prediction(model, image);
       console.log(netoutValue.dataSync());
       var ret = [];
