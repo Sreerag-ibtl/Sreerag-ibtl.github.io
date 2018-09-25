@@ -54,20 +54,21 @@
     }
 
     async function predText(){
-       const netoutValue = prediction(image);
-       console.log(netoutValue.dataSync());
-       var ret = [];
-       var outBest = [];
-       var outStr = "";
-       outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1).dataSync();
-       console.log(outBest);
-       for(let c of outBest){
+      image = preprocess(image);
+      const netoutValue = prediction(image);
+      console.log(netoutValue.dataSync());
+      var ret = [];
+      var outBest = [];
+      var outStr = "";
+      outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1).dataSync();
+      console.log(outBest);
+      for(let c of outBest){
         if(c<letters.length){
           outStr = outStr+letters[c];
         }
-       }
-       ret[ret.length] = outStr;
-       console.log(ret);
+      }
+      ret[ret.length] = outStr;
+      console.log(ret);
     }
     predText();
   </script>
