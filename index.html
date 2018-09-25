@@ -45,10 +45,10 @@
       return model
     }
 
-    async function prediction(image){
+    function prediction(image){
        return tf.tidy(() => { 
          const model = load()
-         const netOutValue = await model.predict(image)
+         const netOutValue = model.predict(image)
          return netOutValue
        })
     }
