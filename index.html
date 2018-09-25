@@ -38,7 +38,7 @@
        })
     }
 
-    function predict(model, image){
+    function prediction(image){
        return tf.tidy(() => { 
          const netOutValue = model.predict(image);
          return netOutValue;
@@ -49,7 +49,7 @@
        console.log("Model loading...");
        const model = await tf.loadModel("model4jszp/model.json");
        console.log("Model loaded.");  
-       var netoutValue = predict(model, image);
+       var netoutValue = prediction(image);
        console.log(netoutValue.dataSync());
        var ret = [];
        var outBest = [];
