@@ -43,10 +43,12 @@
       console.log(outBest);
       for(var c in outBest){
         if(c<letters.length){
-          outStr = outStr.concat(letters[c]);
+          outStr.concat(letters[c]);
         }
+        ret[ret.length] = outStr;
       }
-      console.log(outStr);
+      join(ret);
+      console.log(ret);
     }
     prob();
  </script>
