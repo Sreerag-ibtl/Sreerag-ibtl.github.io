@@ -31,10 +31,16 @@
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);           
     console.log("Model loading...");
+    function predict(image){
+       return tf.tidy(() => { 
+         const netOutValue = model.predict(preprocess(imgData))
+         return netOutValue
+       })
+    }
     async function prob(){
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");  
-      var netoutValue = model.predict(image);
+      var netoutValue = predict(image);
       console.log(netoutValue.dataSync());
       var ret = [];
       var outBest = [];
