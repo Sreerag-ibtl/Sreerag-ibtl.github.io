@@ -32,6 +32,16 @@
     image = tf.expandDims(image, 0);  
     console.log("Model loading...");
     
+    function filter(array){
+      for(var i=0; i<array.length; i++){
+        while(i != ((array.length)-1)){
+              if(array[i] == array[i+1]){
+                delete array[i+1];
+              }
+        }
+      }
+      return array;
+    }
 
     async function predText(){
       const model = await tf.loadModel("model4jszp/model.json");
@@ -44,6 +54,8 @@
       outBest = tf.argMax(netoutValue.slice([0, 1, 0], [1, 29, 34]), 1);
       console.log(outBest.shape);
       outBest = outBest.dataSync();
+      console.log(outBest);
+      outBest = filter(outBest);
       console.log(outBest);
       for(let c of outBest){
         if(c<letters.length){
