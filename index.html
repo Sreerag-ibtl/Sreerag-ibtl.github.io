@@ -40,6 +40,7 @@
       var outBest = [];
       var outStr = "";
       outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1).dataSync();
+      console.log(outBest);
       for(var c in outBest){
         if(c<letters.length){
           outStr = outStr.concat(letters[c]);
