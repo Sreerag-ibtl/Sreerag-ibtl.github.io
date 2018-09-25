@@ -33,7 +33,7 @@
     console.log("Model loading...");
     function predict(model, image){
        return tf.tidy(() => { 
-         const netOutValue = model.predict(preprocess(image))
+         const netOutValue = model.predict(image)
          return netOutValue
        })
     }
