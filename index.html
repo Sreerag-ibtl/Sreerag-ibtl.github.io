@@ -26,6 +26,7 @@
     cv.cvtColor(image, image, cv.COLOR_RGBA2GRAY, 0);
     cv.resize(image, image, dsize, cv.INTER_LINEAR);
     cv.transpose(image, image);
+    console.log('image size: ' + image.size().width + '*' + image.size().height);
     image = image.data;
     image = tf.tensor2d(image, [128, 64]);
     image = tf.cast(image,'float32');
