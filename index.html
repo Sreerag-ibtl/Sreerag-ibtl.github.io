@@ -7,7 +7,6 @@
     <p id="status1">OpenCV.JS is loading...</p>
     <p>Input image</p>
     <img src="Images/KL49F2255.jpg" id="imgSource">
-    <p id="status2"></p>
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -84,7 +83,7 @@
       }
       ret[ret.length] = outStr;
       console.log(ret);
-      document.getElementById('status2').innerHTML = ret;
+      window.alert(ret);
     }
     predText();
   </script>
