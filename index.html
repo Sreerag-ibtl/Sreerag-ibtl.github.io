@@ -7,6 +7,7 @@
     <p id="status1">OpenCV.JS is loading...</p>
     <p>Input image</p>
     <img src="Images/14CE754.jpg" id="imgSource">
+    <canvas id="imgOut" width="64" height="128"></canvas>
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -26,8 +27,9 @@
     cv.cvtColor(image, image, cv.COLOR_RGBA2GRAY, 0);
     cv.resize(image, image, dsize, cv.INTER_LINEAR);
     cv.transpose(image, image);
+    cv.imshow('imgOut', image);
     console.log('image size: ' + image.size().width + '*' + image.size().height);
-    image = image.data;
+    /*image = image.data;
     image = tf.tensor2d(image, [128, 64]);
     image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
@@ -79,7 +81,7 @@
       ret[ret.length] = outStr;
       console.log(ret);
     }
-    predText();
+    predText();*/
   </script>
 
 </html>
