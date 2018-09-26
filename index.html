@@ -33,12 +33,15 @@
     console.log("Model loading...");
     
     function filterr(array){
-      for(var i=0; i<((array.length)-1); i++){
+      for(var i=0; i<=((array.length)-1); i++){
         if(array[i] == array[i+1]){
-          array[i+1] = 0;
+          array[i+1] = 35;
         }
       }
-      return array;
+      var filtered = array.filter(function(value, index, arr){
+        return value != 35;
+      });
+      return filtered;
     }
 
     async function predText(){
