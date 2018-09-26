@@ -33,12 +33,9 @@
     console.log("Model loading...");
     
     function filter(array){
-      for(var i=0; i<array.length; i++){
-        while(i < ((array.length)-1)){
-              if(array[i] == array[i+1]){
-                delete array[i+1];
-                i = i+1;
-              }
+      for(var i=0; i<((array.length)-1); i++){
+        if(array[i] == array[i+1]){
+          delete array[i+1];
         }
       }
       return array;
