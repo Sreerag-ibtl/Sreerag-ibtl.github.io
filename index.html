@@ -27,22 +27,28 @@
     cv.resize(image, image, dsize, cv.INTER_LINEAR);  
     image = image.data;
     image = tf.tensor2d(image, [128, 64]);
-    image = tf.transpose(image);
     image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);  
     console.log("Model loading...");
     
     function filterr(array){
+      var pos = [];
+      var new_array = [];
       for(var i=0; i<=((array.length)-1); i++){
         if(array[i] == array[i+1]){
-          array[i+1] = 35;
+          pos[pos.length] = i+1;
         }
       }
-      var filtered = array.filter(function(value, index, arr){
-        return value != 35;
-      });
-      return filtered;
+      for(var i=0; i<=((array.length)-1); i++){
+        if(pos.includes(i)){
+          continue;
+        }
+        else{
+          new_array.[new_array.length] = array[i];
+        }
+      }
+      return new_array;
     }
 
     async function predText(){
