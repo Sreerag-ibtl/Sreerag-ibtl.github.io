@@ -32,7 +32,7 @@
     image = tf.expandDims(image, 0);  
     console.log("Model loading...");
     
-    function filter(array){
+    function filterr(array){
       for(var i=0; i<((array.length)-1); i++){
         if(array[i] == array[i+1]){
           array[i+1] = 0;
@@ -53,7 +53,7 @@
       console.log(outBest.shape);
       outBest = outBest.dataSync();
       console.log(outBest);
-      outBest = filter(outBest);
+      outBest = filterr(outBest);
       console.log(outBest);
       for(let c of outBest){
         if(c<letters.length){
