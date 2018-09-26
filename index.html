@@ -24,7 +24,8 @@
     let dsize = new cv.Size(128, 64);
     let image = cv.imread(imgSource); 
     cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
-    cv.resize(image, image, dsize, cv.INTER_LINEAR);  
+    cv.resize(image, image, dsize, cv.INTER_LINEAR);
+    cv.transpose(image, image);
     image = image.data;
     image = tf.tensor2d(image, [128, 64]);
     image = tf.cast(image,'float32');
@@ -60,7 +61,7 @@
       var outBest = [];
       var outStr = "";
       console.log(netoutValue.slice([0, 2, 0], [1, 30, 34]).shape);
-      outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 0);
+      outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1);
       console.log(outBest.shape);
       outBest = outBest.squeeze(outBest, 0);
       console.log(outBest.shape);
