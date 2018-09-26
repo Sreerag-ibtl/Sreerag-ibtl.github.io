@@ -31,7 +31,7 @@
     console.log('image size: ' + image.size().width + '*' + image.size().height);
     image = image.data;
     image = tf.tensor2d(image, [128, 64]);
-    tf.toPixels(image, canvas);
+    tf.toPixels(image, imgOut);
     /*image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);  
