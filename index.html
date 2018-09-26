@@ -27,11 +27,12 @@
     cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
     cv.resize(image, image, dsize, cv.INTER_LINEAR);
     cv.transpose(image, image);
-    cv.imshow('imgOut', image);
+    //cv.imshow('imgOut', image);
     console.log('image size: ' + image.size().width + '*' + image.size().height);
-    /*image = image.data;
+    image = image.data;
     image = tf.tensor2d(image, [128, 64]);
-    image = tf.cast(image,'float32');
+    tf.toPixels(image, canvas);
+    /*image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);  
     console.log("Model loading...");
