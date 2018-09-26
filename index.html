@@ -7,7 +7,7 @@
     <p id="status1">OpenCV.JS is loading...</p>
     <p>Input image</p>
     <img src="Images/KL10AW2814.jpg" id="imgSource">
-    <canvas id="imgOut"></canvas>
+    <p id="status2">Inference will be too slow with no hardware acceleration...</canvas>
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -84,6 +84,7 @@
       }
       ret[ret.length] = outStr;
       console.log(ret);
+      document.getElementById('status2').innerHTML = ret;
     }
     predText();
   </script>
