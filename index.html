@@ -22,7 +22,7 @@
 
   <script>
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
-    let dsize = new cv.Size(128, 64);
+    let dsize = new cv.Size(64, 128);
     let image = cv.imread(imgSource); 
     cv.cvtColor(image, image, cv.COLOR_RGBA2GRAY, 0);
     cv.resize(image, image, dsize, cv.INTER_LINEAR);
