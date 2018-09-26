@@ -63,9 +63,9 @@
       var outStr = "";
       netoutValue = tf.slice(netoutValue, [0, 2, 0], [1, 30, 34]);
       console.log(netoutValue.shape);
-      netoutValue = tf.squeeze(netoutValue, 0);
-      console.log(netoutValue.shape);
-      outBest = tf.argMax(netoutValue, 0);
+      netoutValue = tf.squeeze(netoutValue, 1);
+      netoutValue.print();
+      outBest = tf.argMax(netoutValue, 1);
       console.log(outBest.shape);
       outBest = outBest.dataSync();
       console.log(outBest);
