@@ -56,7 +56,7 @@
     async function predText(){
       const model = await tf.loadModel("model4jszp/model.json");
       console.log("Model loaded.");
-      const netoutValue = model.predict(image);
+      var netoutValue = model.predict(image);
       console.log(netoutValue.shape);
       var ret = [];
       var outBest = [];
