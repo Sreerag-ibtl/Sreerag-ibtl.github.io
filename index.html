@@ -63,7 +63,7 @@
       var netoutValue = model.predict(image);
       netoutValue.print();
       console.log(netoutValue.shape);
-      netoutValue = tf.squeeze(netoutValue,0);
+      netoutValue = tf.squeeze(netoutValue);
       console.log(netoutValue.shape);
       var ret = [];
       var outBest = [];
