@@ -27,6 +27,7 @@
     cv.resize(image, image, dsize, cv.INTER_LINEAR);  
     image = image.data;
     image = tf.tensor2d(image, [128, 64]);
+    image = tf.transpose(image);
     image = tf.cast(image,'float32');
     image = tf.expandDims(image, -1);
     image = tf.expandDims(image, 0);  
