@@ -60,8 +60,9 @@
       var outBest = [];
       var outStr = "";
       console.log(netoutValue.slice([0, 2, 0], [1, 30, 34]).shape);
-      outBest = tf.argMax(netoutValue.slice([0, 1, 0], [1, 29, 34]), 1);
+      outBest = tf.argMax(netoutValue.slice([0, 2, 0], [1, 30, 34]), 1);
       console.log(outBest.shape);
+      outBest = outBest.squeeze(outBest, 0);
       outBest = outBest.dataSync();
       console.log(outBest);
       outBest = filterr(outBest);
