@@ -89,10 +89,10 @@
     }
     predText();
     
-    let dsize = new cv.Size(128, 64);
+    let dsize1 = new cv.Size(128, 64);
     let image1 = cv.imread(imgSource2); 
     cv.cvtColor(image1, image1, cv.COLOR_BGR2GRAY, 0);
-    cv.resize(image1, image1, dsize, cv.INTER_AREA);
+    cv.resize(image1, image1, dsize1, cv.INTER_AREA);
     cv.transpose(image1, image1);
     //cv.imshow('imgOut', image);
     console.log('image size: ' + image1.size().width + '*' + image1.size().height);
