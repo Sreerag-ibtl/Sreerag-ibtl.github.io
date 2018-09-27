@@ -6,7 +6,7 @@
     <p id="status">TensorFlow.JS is loading...</p>
     <p id="status1">OpenCV.JS is loading...</p>
     <p>Input image</p>
-    <img src="Images/KL10AW2814.jpg" id="imgSource">
+    <a <img src="Images/KL10AW2814.jpg" id="imgSource">
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -58,7 +58,9 @@
     async function predText(){
       const model = await tf.loadModel("tfmodel/model.json");
       console.log("Model loaded.");
+      console.log("Processing");
       var netoutValue = model.predict(image);
+      console.log("Prediction ready");
       netoutValue.print(true);
       console.log(netoutValue.shape);
       netoutValue = tf.squeeze(netoutValue);
