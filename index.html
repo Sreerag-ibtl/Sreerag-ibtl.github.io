@@ -40,7 +40,7 @@
       model = await tf.loadModel("tfmodel/model.json");
       console.log("Model loaded!!!");
       console.log("Warming up");
-      model.predict(tf.zeros([1, 128, 64, 1]));
+      await model.predict(tf.zeros([1, 128, 64, 1]));
     }        
     
     function filterr(array){
@@ -64,7 +64,7 @@
 
     async function predText(){
       console.log("Processing...");
-      var netoutValue = model.predict(image);
+      var netoutValue = await model.predict(image);
       console.log("Done.");
       netoutValue.print(true);
       console.log(netoutValue.shape);
