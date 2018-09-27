@@ -21,19 +21,23 @@
 
   <script>
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
-    let dsize = new cv.Size(128, 64);
-    let image = cv.imread(imgSource1); 
-    cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
-    cv.resize(image, image, dsize, cv.INTER_AREA);
-    cv.transpose(image, image);
-    //cv.imshow('imgOut', image);
-    console.log('image size: ' + image.size().width + '*' + image.size().height);
-    image = image.data;
-    image = tf.tensor2d(image, [128, 64]);
-    image = tf.cast(image,'float32');
-    image = tf.div(image, tf.scalar(255));
-    image = tf.expandDims(image, -1);
-    image = tf.expandDims(image, 0);  
+    function imgProc(var k){
+      let dsize = new cv.Size(128, 64);
+      let image = cv.imread(imgSource1);
+      cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
+      cv.resize(image, image, dsize, cv.INTER_AREA);
+      cv.transpose(image, image);
+      //cv.imshow('imgOut', image);
+      console.log('image size: ' + image.size().width + '*' + image.size().height);
+      image = image.data;
+      image = tf.tensor2d(image, [128, 64]);
+      image = tf.cast(image,'float32');
+      image = tf.div(image, tf.scalar(255));
+      image = tf.expandDims(image, -1);
+      image = tf.expandDims(image, 0);
+      return image;
+    }
+    
     console.log("Model loading...");
     
     function filterr(array){
@@ -87,47 +91,5 @@
       console.log(ret);
       window.alert(ret);
     }
-    predText();
-    
-    let dsize1 = new cv.Size(128, 64);
-    let image1 = cv.imread(imgSource2); 
-    cv.cvtColor(image1, image1, cv.COLOR_BGR2GRAY, 0);
-    cv.resize(image1, image1, dsize1, cv.INTER_AREA);
-    cv.transpose(image1, image1);
-    //cv.imshow('imgOut', image);
-    console.log('image size: ' + image1.size().width + '*' + image1.size().height);
-    image1 = image1.data;
-    image1 = tf.tensor2d(image1, [128, 64]);
-    image1 = tf.cast(image1,'float32');
-    image1 = tf.div(image1, tf.scalar(255));
-    image1 = tf.expandDims(image1, -1);
-    image1 = tf.expandDims(image1, 0); 
-    var netoutValue1 = model.predict(image1);
-    console.log("Prediction ready");
-    netoutValue.print(true);
-    console.log(netoutValue1.shape);
-    netoutValue1 = tf.squeeze(netoutValue1);
-    console.log(netoutValue1.shape);
-    var ret1 = [];
-    var outBest1 = [];
-    var outStr1 = "";
-    netoutValue1 = tf.slice(netoutValue1, [2, 0], [30, 34]);
-    console.log(netoutValue1.shape);
-    netoutValue1 = tf.squeeze(netoutValue1, 0);
-    console.log(netoutValue1.shape);
-    outBest = tf.argMax(netoutValue1, 1);
-    console.log(outBest1.shape);
-    outBest1 = outBest1.dataSync();
-    console.log(outBest1);
-    outBest1 = filterr(outBest1);
-    console.log(outBest1);
-    for(let c1 of outBest1){
-      if(c1<letters.length){
-        outStr1 = outStr1+letters[c1];
-      }
-    }
-    ret1[ret1.length] = outStr1;
-    console.log(ret1);
-    window.alert(ret1);
   </script>
 </html>
