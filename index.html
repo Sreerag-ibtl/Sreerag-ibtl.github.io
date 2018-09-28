@@ -39,7 +39,8 @@
       image1 = tf.div(image1, tf.scalar(255));
       image1 = tf.expandDims(image1, -1);
       image1 = tf.expandDims(image1, 0);
-      return image1;
+      image = image1;
+      return image;
     });
                         
     function filterr(array){
