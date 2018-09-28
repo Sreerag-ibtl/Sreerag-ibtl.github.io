@@ -32,13 +32,13 @@
     console.log('image size: ' + image.size().width + '*' + image.size().height);
     image = image.data;
     
-    var image2 = tf.tidy(() => {
-      var image1 = tf.tensor2d(image, [128, 64]);
-      image1 = tf.cast(image1,'float32');
-      image1 = tf.div(image1, tf.scalar(255));
-      image1 = tf.expandDims(image1, -1);
-      image1 = tf.expandDims(image1, 0);
-      return image1;
+    image = tf.tidy(() => {
+      image = tf.tensor2d(image, [128, 64]);
+      image = tf.cast(image,'float32');
+      image = tf.div(image, tf.scalar(255));
+      image = tf.expandDims(image, -1);
+      image = tf.expandDims(image, 0);
+      return image;
     });
                         
     function filterr(array){
