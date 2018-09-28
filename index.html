@@ -63,7 +63,7 @@
     async function predText(){
       console.log("Model loading...");
       console.log(tf.memory());
-      consol.time('loadTimer');
+      console.time('loadTimer');
       model = await tf.loadModel("tfmodel/model.json");
       console.timeEnd('loadTimer');
       console.log("Model loaded!");
