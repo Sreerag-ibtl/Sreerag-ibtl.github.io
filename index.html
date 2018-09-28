@@ -56,7 +56,7 @@
       return new_array;
     }
 
-    tf.tidy(async function predText(){
+    tf.tidy(async ()=>{
       console.log("Model loading...");
       model = await tf.loadModel("tfmodel/model.json");
       console.log("Model loaded!");
