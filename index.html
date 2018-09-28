@@ -76,6 +76,7 @@
       console.timeEnd('warmTimer')
       console.log("Predicting");
       console.time('realTimer');
+      await predText()
     }
       
     async function predText(){
@@ -111,6 +112,6 @@
     }
     
     load();
-    predText();
+
   </script>
 </html>
