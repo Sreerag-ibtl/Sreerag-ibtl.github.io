@@ -67,9 +67,13 @@
       console.log("Model loaded!");
       console.log(tf.memory());
       console.log("Warming up");
+      console.time(warmTimer);
       await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
+      console.timeEnd(warmTimer)
       console.log("Predicting");
+      console.time(realTimer);
       var netoutValue = await model.predict(image);
+      console.timeEnd(realTimer);
       console.log(tf.memory());
       console.log("Done.");
       netoutValue.print(true);
