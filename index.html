@@ -69,7 +69,7 @@
       console.log("Warming up");
       await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       console.log("Predicting");
-      var netoutValue = await model.predict(image).dispose();
+      var netoutValue = await model.predict(image2).dispose();
       console.log(tf.memory());
       console.log("Done.");
       netoutValue.print(true);
