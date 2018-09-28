@@ -59,13 +59,14 @@
     async function predText(){
       console.log("Model loading...");
       console.log(tf.memory());
-      model = await tf.loadModel("tfmodel/model.json").dispose();
+      model = await tf.loadModel("tfmodel/model.json");
+      model.dispose();
       console.log("Model loaded!");
       console.log(tf.memory());
       console.log("Warming up");
       await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       console.log("Predicting");
-      var netoutValue = await model.predict(image);
+      var netoutValue = await model.predict(image).dispose();
       console.log(tf.memory());
       console.log("Done.");
       netoutValue.print(true);
