@@ -33,12 +33,13 @@
     image = image.data;
     
     image = tf.tidy(() => {
-      image = tf.tensor2d(image, [128, 64]);
-      image = tf.cast(image,'float32');
-      image = tf.div(image, tf.scalar(255));
-      image = tf.expandDims(image, -1);
-      image = tf.expandDims(image, 0);
-      return image;
+      var image1;
+      image1 = tf.tensor2d(image, [128, 64]);
+      image1 = tf.cast(image1,'float32');
+      image1 = tf.div(image1, tf.scalar(255));
+      image1 = tf.expandDims(image1, -1);
+      image1 = tf.expandDims(image1, 0);
+      return image1;
     });
                         
     function filterr(array){
@@ -69,7 +70,7 @@
       console.log("Warming up");
       await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       console.log("Predicting");
-      var netoutValue = await model.predict(image2);
+      var netoutValue = await model.predict(image);
       console.log(tf.memory());
       console.log("Done.");
       netoutValue.print(true);
