@@ -66,6 +66,8 @@
       model = await tf.loadModel("tfmodel/model.json");
       console.log("Model loaded!");
       console.log(tf.memory());
+      console.time('dummyTimer');
+      console.timeEnd('dummyTimer');
       console.log("Warming up");
       console.time('warmTimer');
       await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
