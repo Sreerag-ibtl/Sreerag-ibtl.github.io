@@ -79,7 +79,7 @@
       var ret = [];
       var outBest = [];
       var outStr = "";
-      netoutValue = tf.slice(netoutValue.dispose(), [2, 0], [30, 34]);
+      netoutValue = tf.slice(netoutValue, [2, 0], [30, 34]);
       console.log(netoutValue.shape);
       netoutValue = tf.squeeze(netoutValue, 0);
       console.log(netoutValue.shape);
