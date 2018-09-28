@@ -31,19 +31,20 @@
     //cv.imshow('imgOut', image);
     console.log('image size: ' + image.size().width + '*' + image.size().height);
     image = image.data;
+    var image1;
     
     image = tf.tidy(() => {
-      var image1;
       image1 = tf.tensor2d(image, [128, 64]);
       image1 = tf.cast(image1,'float32');
       image1 = tf.div(image1, tf.scalar(255));
       image1 = tf.expandDims(image1, -1);
       image1 = tf.expandDims(image1, 0);
       image = image1;
-      image1.dispose();
       return image;
     });
-                        
+    
+    image1.dispose();
+    
     function filterr(array){
       var pos = [];
       var new_array = [];
