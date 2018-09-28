@@ -34,10 +34,10 @@
     
     image = tf.tidy(() => {
       const image1 = tf.tensor2d(image, [128, 64]);
-      image1.cast('float32');
-      image1.div(tf.scalar(255));
-      image1.expandDims(-1);
-      image1.expandDims(0);
+      image1 = tf.cast(image1, 'float32');
+      image1 = tf.div(image1, tf.scalar(255));
+      image1 = tf.expandDims(image1, -1);
+      image1 = expandDims(image1, 0);
       return image1;
     });
     
