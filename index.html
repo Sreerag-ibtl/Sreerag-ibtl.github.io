@@ -60,7 +60,7 @@
       return new_array;
     }
 
-    async function predText(){
+    async function load(){
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
@@ -76,6 +76,9 @@
       console.timeEnd('warmTimer')
       console.log("Predicting");
       console.time('realTimer');
+    }
+      
+    async function predText(){
       var netoutValue = await model.predict(image);
       console.timeEnd('realTimer');
       console.log(tf.memory());
@@ -107,6 +110,7 @@
       window.alert(ret);
     }
     
+    load();
     predText();
   </script>
 </html>
