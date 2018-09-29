@@ -113,8 +113,15 @@
       window.alert(ret);
     }
     
-    const jsonUpload = document.getElementById('json-upload');
-    const weightsUpload = document.getElementById('weights-upload');
+    var jsonUpload;
+    var weightsUpload;
+    
+    async function files(){
+      jsonUpload = await document.getElementById('json-upload');
+      weightsUpload = await document.getElementById('weights-upload');
+    }
+    
+    files();
     load();
 
   </script>
