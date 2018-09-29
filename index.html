@@ -1,13 +1,11 @@
 <html>
   <head> </head>
       
-  <body>
-    
+  <body>   
     <h1>DEMO: ALPR</h1>
     <p id="status">TensorFlow.JS is loading...</p>
     <p id="status1">OpenCV.JS is loading...</p>
-    <img src="Images/KL10AW2814.jpg" id="imgSource"></img>
-    
+    <img src="Images/KL10AW2814.jpg" id="imgSource"></img>    
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -17,15 +15,11 @@
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0" onload="onTfJsReady();"> </script>
-    <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvJsReady();"> </script>
-  
+    <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvJsReady();"> </script>  
   </body>
-
-  <script>
-    
+  <script>    
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
-    var model;
-    
+    var model;    
     tf.setBackend('cpu');
     console.log(tf.getBackend());
     let dsize = new cv.Size(128, 64);
@@ -35,8 +29,7 @@
     cv.transpose(image, image);
     //cv.imshow('imgOut', image);
     console.log('image size: ' + image.size().width + '*' + image.size().height);
-    image = image.data;
-    
+    image = image.data;    
     image = tf.tidy(() => {
       let image1 = tf.tensor2d(image, [128, 64]);
       image1 = tf.cast(image1, 'float32');
@@ -44,8 +37,7 @@
       image1 = tf.expandDims(image1, -1);
       image1 = tf.expandDims(image1, 0);
       return image1;
-    });
-    
+    });    
     function filterr(array){
       var pos = [];
       var new_array = [];
@@ -64,7 +56,6 @@
       }
       return new_array;
     }
-
     async function load(){    
       console.log("Model loading...");
       console.log(tf.memory());
@@ -82,8 +73,7 @@
       console.log("Predicting");
       console.time('realTimer');
       await predText()
-    }
-      
+    }      
     async function predText(){
       var netoutValue = model.predict(image);
       console.timeEnd('realTimer');
@@ -96,11 +86,11 @@
       var ret = [];
       var outBest = [];
       var outStr = "";
-      netoutValue = await tf.slice(netoutValue, [2, 0], [30, 34]);
+      netoutValue = tf.slice(netoutValue, [2, 0], [30, 34]);
       console.log(netoutValue.shape);
-      netoutValue = await tf.squeeze(netoutValue, 0);
+      netoutValue = tf.squeeze(netoutValue, 0);
       console.log(netoutValue.shape);
-      outBest = await tf.argMax(netoutValue, 1);
+      outBest = tf.argMax(netoutValue, 1);
       console.log(outBest.shape);
       outBest = outBest.dataSync();
       console.log(outBest);
@@ -114,10 +104,7 @@
       ret[ret.length] = outStr;
       console.log(ret);
       window.alert(ret);
-    }
-    
+    }    
     load();
-
   </script>
-
 </html>
