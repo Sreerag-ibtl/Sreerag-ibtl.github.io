@@ -15,7 +15,7 @@
     </script>
   
     <input name="json-upload" type="file" />
-    <input name="weights-upload" onclick="files()" type="file" />
+    <input name="weights-upload" onclick="files();" type="file" />
     
     <script>
       function onTfJsReady(){
@@ -80,7 +80,7 @@
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
-      model = await tf.loadModel(tf.io.browserFiles([jsonUploads.files[0], weightsUpload.files[0]]));
+      model = await tf.loadModel(tf.io.browserFiles([jsonUpload.files[0], weightsUpload.files[0]]));
       console.timeEnd('loadTimer');
       console.log("Model loaded!");
       console.log(tf.memory());
