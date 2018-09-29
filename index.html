@@ -8,8 +8,7 @@
     <p id="status1">OpenCV.JS is loading...</p>
     <img src="Images/KL10AW2814.jpg" id="imgSource"></img>
   
-    <input name="json-upload" type="file" />
-    <input name="weights-upload" type="file" />
+    <input name="model" type="file" multiple> </input>
     
     <script>
       function onTfJsReady(){
@@ -28,9 +27,7 @@
     
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
     var model;
-    var jsonUpload = document.querySelector('json-upload');
-    var weightsUpload = document.querySelector('weights-upload');
-    
+    var modelUpload = document.querySelector('model');
     
     tf.setBackend('cpu');
     console.log(tf.getBackend());
@@ -75,7 +72,7 @@
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
-      model = await tf.loadModel(tf.io.browserFiles([jsonUpload.files[0], weightsUpload.files[0]]));
+      model = await tf.loadModel(tf.io.browserFiles([modelUpload.files[0], modelUpload.files[1], modelUpload.files[2]]));
       console.timeEnd('loadTimer');
       console.log("Model loaded!");
       console.log(tf.memory());
@@ -122,7 +119,7 @@
       window.alert(ret);
     }
     
-    weightsUpload.addEventListner('change', load());
+    modelUpload.addEventListner('change', load());
 
   </script>
 
