@@ -96,7 +96,7 @@
       var ret = [];
       var outBest = [];
       var outStr = "";
-      netoutValue = awai tf.slice(netoutValue, [2, 0], [30, 34]);
+      netoutValue = await tf.slice(netoutValue, [2, 0], [30, 34]);
       console.log(netoutValue.shape);
       netoutValue = await tf.squeeze(netoutValue, 0);
       console.log(netoutValue.shape);
