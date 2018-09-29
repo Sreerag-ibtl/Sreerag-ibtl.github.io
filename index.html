@@ -1,6 +1,5 @@
 <html>
-  <head> </head>
-      
+  <head> </head>   
   <body>   
     <h1>DEMO: ALPR</h1>
     <p id="status">TensorFlow.JS is loading...</p>
@@ -55,11 +54,11 @@
     }
     async function load(){    
       model = await tf.loadModel("tfmodel/model.json");
-      await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
+      model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       await predText()
     }      
     async function predText(){
-      var netoutValue = await model.predict(image);
+      var netoutValue = model.predict(image);
       netoutValue.print(true);
       netoutValue = tf.squeeze(netoutValue);
       var ret = [];
