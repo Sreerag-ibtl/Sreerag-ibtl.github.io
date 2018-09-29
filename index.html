@@ -68,7 +68,7 @@
       netoutValue = tf.slice(netoutValue, [2, 0], [30, 34]);
       netoutValue = tf.squeeze(netoutValue, 0);
       outBest = tf.argMax(netoutValue, 1);
-      //outBest = outBest.dataSync();
+      outBest = outBest.dataSync();
       outBest = filterr(outBest);
       for(let c of outBest){
         if(c<letters.length){
