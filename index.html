@@ -69,7 +69,7 @@
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
-      model = await tf.loadModel(tf.io.browserFiles([modelUpload.files[0], modelUpload.files[1], modelUpload.files[2]]));
+      model = await tf.loadModel("tfmodel/model.json");
       console.timeEnd('loadTimer');
       console.log("Model loaded!");
       console.log(tf.memory());
