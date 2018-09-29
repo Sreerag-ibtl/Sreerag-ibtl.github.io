@@ -63,8 +63,8 @@
     }
 
     async function load(){
-      const jsonUpload = document.getElementById('json-upload');
-      const weightsUpload = document.getElementById('weights-upload');
+      const jsonUpload = await document.getElementById('json-upload');
+      const weightsUpload = await document.getElementById('weights-upload');
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
