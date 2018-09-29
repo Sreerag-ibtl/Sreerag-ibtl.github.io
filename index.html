@@ -21,14 +21,11 @@
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
     var model;    
     tf.setBackend('cpu');
-    console.log(tf.getBackend());
     let dsize = new cv.Size(128, 64);
     let image = cv.imread(imgSource);
     cv.cvtColor(image, image, cv.COLOR_BGR2GRAY, 0);
     cv.resize(image, image, dsize, cv.INTER_AREA);
     cv.transpose(image, image);
-    //cv.imshow('imgOut', image);
-    console.log('image size: ' + image.size().width + '*' + image.size().height);
     image = image.data;    
     image = tf.tidy(() => {
       let image1 = tf.tensor2d(image, [128, 64]);
@@ -57,52 +54,28 @@
       return new_array;
     }
     async function load(){    
-      console.log("Model loading...");
-      console.log(tf.memory());
-      console.time('loadTimer');
       model = await tf.loadModel("tfmodel/model.json");
-      console.timeEnd('loadTimer');
-      console.log("Model loaded!");
-      console.log(tf.memory());
-      console.time('dummyTimer');
-      console.timeEnd('dummyTimer');
-      console.log("Warming up");
-      console.time('warmTimer');
       await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
-      console.timeEnd('warmTimer')
-      console.log("Predicting");
-      console.time('realTimer');
       await predText()
     }      
     async function predText(){
       var netoutValue = model.predict(image);
-      console.timeEnd('realTimer');
-      console.log(tf.memory());
-      console.log("Done.");
       netoutValue.print(true);
-      console.log(netoutValue.shape);
       netoutValue = await tf.squeeze(netoutValue);
-      console.log(netoutValue.shape);
       var ret = [];
       var outBest = [];
       var outStr = "";
       netoutValue = tf.slice(netoutValue, [2, 0], [30, 34]);
-      console.log(netoutValue.shape);
       netoutValue = tf.squeeze(netoutValue, 0);
-      console.log(netoutValue.shape);
       outBest = tf.argMax(netoutValue, 1);
-      console.log(outBest.shape);
       outBest = outBest.dataSync();
-      console.log(outBest);
       outBest = filterr(outBest);
-      console.log(outBest);
       for(let c of outBest){
         if(c<letters.length){
           outStr = outStr+letters[c];
         }
       }
       ret[ret.length] = outStr;
-      console.log(ret);
       window.alert(ret);
     }    
     load();
