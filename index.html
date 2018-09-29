@@ -23,14 +23,15 @@
   <script>
     let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];
     var model;
-    var jsonUpload;
-    var weightsUpload;
+    var flag=0;
+    var jsonUpload();
+    var weightsUpload();
     
     async function files(){
-      
+      jsonUpload = document.getElementById('json-upload');
+      weightsUpload = document.getElementById('weights-upload');
+      flag = 1;
     }
-    
-    files();
     
     tf.setBackend('cpu');
     console.log(tf.getBackend());
@@ -72,8 +73,6 @@
     }
 
     async function load(){    
-      jsonUpload = document.getElementById('json-upload');
-      weightsUpload = document.getElementById('weights-upload');
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
@@ -124,7 +123,9 @@
       window.alert(ret);
     }
     
-    load();
+    if(flag==1){
+      load();
+    }
 
   </script>
 </html>
