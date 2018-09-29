@@ -77,7 +77,7 @@
       console.timeEnd('dummyTimer');
       console.log("Warming up");
       console.time('warmTimer');
-      model.predict(tf.zeros([1, 128, 64, 1])).dispose();
+      await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       console.timeEnd('warmTimer')
       console.log("Predicting");
       console.time('realTimer');
@@ -91,16 +91,16 @@
       console.log("Done.");
       netoutValue.print(true);
       console.log(netoutValue.shape);
-      netoutValue = tf.squeeze(netoutValue);
+      netoutValue = await tf.squeeze(netoutValue);
       console.log(netoutValue.shape);
       var ret = [];
       var outBest = [];
       var outStr = "";
-      netoutValue = tf.slice(netoutValue, [2, 0], [30, 34]);
+      netoutValue = awai tf.slice(netoutValue, [2, 0], [30, 34]);
       console.log(netoutValue.shape);
-      netoutValue = tf.squeeze(netoutValue, 0);
+      netoutValue = await tf.squeeze(netoutValue, 0);
       console.log(netoutValue.shape);
-      outBest = tf.argMax(netoutValue, 1);
+      outBest = await tf.argMax(netoutValue, 1);
       console.log(outBest.shape);
       outBest = outBest.dataSync();
       console.log(outBest);
