@@ -30,9 +30,8 @@
     async function files(){
       jsonUpload = document.getElementById('json-upload');
       weightsUpload = document.getElementById('weights-upload');
+      weightsUpload.onload = load();
     }
-    
-    files();
     
     tf.setBackend('cpu');
     console.log(tf.getBackend());
@@ -73,7 +72,7 @@
       return new_array;
     }
 
-    weightsUpload.onload = async function load(){    
+    async function load(){    
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
@@ -123,6 +122,8 @@
       console.log(ret);
       window.alert(ret);
     }
+    
+    files();
 
   </script>
 </html>
