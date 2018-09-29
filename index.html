@@ -32,6 +32,8 @@
       weightsUpload = document.getElementById('weights-upload');
     }
     
+    files();
+    
     tf.setBackend('cpu');
     console.log(tf.getBackend());
     let dsize = new cv.Size(128, 64);
