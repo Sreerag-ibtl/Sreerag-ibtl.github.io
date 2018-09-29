@@ -77,7 +77,7 @@
       console.timeEnd('dummyTimer');
       console.log("Warming up");
       console.time('warmTimer');
-      await model.predict(tf.zeros([1, 128, 64, 1])).dispose();
+      model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       console.timeEnd('warmTimer')
       console.log("Predicting");
       console.time('realTimer');
@@ -85,7 +85,7 @@
     }
       
     async function predText(){
-      var netoutValue = await model.predict(image);
+      var netoutValue = model.predict(image);
       console.timeEnd('realTimer');
       console.log(tf.memory());
       console.log("Done.");
