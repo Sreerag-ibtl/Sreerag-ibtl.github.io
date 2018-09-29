@@ -6,6 +6,8 @@
     <p id="status">TensorFlow.JS is loading...</p>
     <p id="status1">OpenCV.JS is loading...</p>
     <img src="Images/KL10AW2814.jpg" id="imgSource"></img>
+    <input name="json-upload" type="file" />
+    <input name="weights-upload" type="file" />
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -61,10 +63,12 @@
     }
 
     async function load(){
+      const jsonUpload = document.getElementById('json-upload');
+      const weightsUpload = document.getElementById('weights-upload');
       console.log("Model loading...");
       console.log(tf.memory());
       console.time('loadTimer');
-      model = await tf.loadModel("tfmodel/model.json");
+      model = await tf.loadModel(tf.io.browserFiles([jsonUpload.files[0], weightsUpload.files[0]]));
       console.timeEnd('loadTimer');
       console.log("Model loaded!");
       console.log(tf.memory());
