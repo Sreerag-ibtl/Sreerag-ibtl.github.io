@@ -59,9 +59,9 @@
       await predText()
     }      
     async function predText(){
-      var netoutValue = model.predict(image);
+      var netoutValue = await model.predict(image);
       netoutValue.print(true);
-      netoutValue = await tf.squeeze(netoutValue);
+      netoutValue = tf.squeeze(netoutValue);
       var ret = [];
       var outBest = [];
       var outStr = "";
