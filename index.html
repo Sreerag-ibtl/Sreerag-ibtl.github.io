@@ -66,7 +66,7 @@
       });
     }
     async function predText(){
-      tf.tidy(()=>{
+      return tf.tidy(()=>{
         console.time('begin');
         var netoutValue = model.predict(image);
         console.timeEnd('begin');
