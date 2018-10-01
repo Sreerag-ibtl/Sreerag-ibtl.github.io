@@ -57,14 +57,15 @@
       console.log(tf.memory);
       const totalWeightsSize = tf.util.flatten(model.layers.map(l => l.weights).filter(x => x.length > 0)).map(x => x.val).reduce((accumulator, weight) => accumulator += weight.size, 0);
       console.log(totalWeightsSize);
+      warmup();
+      predText();
     }
-    function warmup(){
+    async function warmup(){
       return tf.tidy(()=>{
         model.predict(tf.zeros([1, 128, 64, 1]));
       });
     }
-    warmup();
-    function predText(){
+    async function predText(){
       tf.tidy(()=>{
         console.time('begin');
         var netoutValue = model.predict(image);
@@ -87,6 +88,6 @@
         window.alert(ret);
       });       
     }
-    predText();
+    load();
   </script>
 </html>
