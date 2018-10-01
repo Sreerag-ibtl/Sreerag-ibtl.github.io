@@ -57,7 +57,7 @@
       console.log(tf.memory());
       const totalWeightsSize = tf.util.flatten(model.layers.map(l => l.weights).filter(x => x.length > 0)).map(x => x.val).reduce((accumulator, weight) => accumulator += weight.size, 0);
       console.log(totalWeightsSize);
-      totalWeightsSize.dispose();
+      tf.dispose(totalWeightsSize);
       warmup();
       predText();
     }
