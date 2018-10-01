@@ -1,0 +1,12 @@
+<html>
+<head></head>
+<body>
+<img src="E:\tessExp\image.png" id="image1"></image>
+</body>
+<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+<script>
+var image1=document.getElementById("image1");
+var result;
+Tesseract.recognize(image1).then(result=>console.log(result));
+</script>
+</html>
