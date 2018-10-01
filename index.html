@@ -55,8 +55,8 @@
     async function load(){    
       model = await tf.loadModel("tfmodel/model.json");
       console.log(tf.memory);
-      const totalWeightsSize = tf.util.flatten(model.layers.map(l => l.weights).filter(x => x.length > 0)).map(x => x.val).reduce((accumulator, weight) => accumulator += weight.size, 0);
-      console.log(totalWeightsSize);
+      //const totalWeightsSize = tf.util.flatten(model.layers.map(l => l.weights).filter(x => x.length > 0)).map(x => x.val).reduce((accumulator, weight) => accumulator += weight.size, 0);
+      //console.log(totalWeightsSize);
       model.predict(tf.zeros([1, 128, 64, 1])).dispose();
       predText()
     }      
