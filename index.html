@@ -4,7 +4,7 @@
     <h1>DEMO: ALPR</h1>
     <p id="status">TensorFlow.JS is loading...</p>
     <p id="status1">OpenCV.JS is loading...</p>
-    <img src="A007HA50.png" id="imgSource"></img>    
+    <img src="Images/KL10AW2814.jpg" id="imgSource"></img>    
     <script>
       function onTfJsReady(){
         document.getElementById('status').innerHTML = 'TensorFlow.JS is ready.';
@@ -17,7 +17,7 @@
     <script src="openCV-js-master/openCV-js-master/opencv.js" onload="onOpenCvJsReady();"> </script>  
   </body>
   <script>    
-    let letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'E', 'H', 'K', 'M', 'O', 'P', 'T', 'X', 'Y'];    
+    let letters = letters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'T', 'U', 'W', 'X', 'Y', 'Z', ''];    
     var model;
     tf.setBackend('cpu');
     let dsize = new cv.Size(128, 64);
@@ -53,7 +53,7 @@
       return new_array;
     }
     async function load(){    
-      model = await tf.loadModel("m2convq/model.json");
+      model = await tf.loadModel("tfmodel/model.json");
       console.log(tf.memory());
       const totalWeightsSize = tf.util.flatten(model.layers.map(l => l.weights).filter(x => x.length > 0)).map(x => x.val).reduce((accumulator, weight) => accumulator += weight.size, 0);
       console.log(totalWeightsSize);
