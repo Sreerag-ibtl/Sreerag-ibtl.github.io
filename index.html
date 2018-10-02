@@ -53,7 +53,7 @@
       return new_array;
     }
     async function load(){    
-      model = await tf.loadModel("tfmodel/model.json");
+      model = await tf.loadModel("m2convq/model.json");
       console.log(tf.memory());
       const totalWeightsSize = tf.util.flatten(model.layers.map(l => l.weights).filter(x => x.length > 0)).map(x => x.val).reduce((accumulator, weight) => accumulator += weight.size, 0);
       console.log(totalWeightsSize);
